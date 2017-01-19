@@ -1,5 +1,3 @@
-var Shape = require('../shapes/Shape.js').Shape;
-
 var Router = function(){
 
      this.routes = {};
@@ -24,15 +22,15 @@ Router.prototype.getArgumentByName = function( argName ){
 
 };
 
-Router.prototype.setRoute = function( route, rootShape ){
+Router.prototype.setRoute = function( route, somethingYouWillRoute ){
 
      if( !route )
           throw 'You shouldnt input empty values as a route';
 
-     if( !rootShape || !rootShape instanceof Shape )
-          throw 'You should input a shape';
+     if( !rootShape )
+          throw 'You should input something you will route';
 
-     this.routes[ this._repairSlashes( route ) ] = rootShape;
+     this.routes[ this._repairSlashes( route ) ] = somethingYouWillRoute;
 
 };
 
@@ -80,4 +78,4 @@ Router.prototype._repairSlashes = function( word ){
 };
 
 
-exports.Router = Router;
+module.exports = Router;
