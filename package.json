@@ -1,8 +1,8 @@
 {
   "name": "progressiverouter",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "fontend-only router",
-  "main": "index.js",
+  "main": "./src/index.js",
   "directories": {
     "test": "test"
   },
