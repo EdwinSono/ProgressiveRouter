@@ -86,7 +86,7 @@ Router.prototype._repairSlashes = function( word ){
 Router.prototype.addLib = function( name, singleton ){
 
   if( name !== '' && typeof name === 'string' && singleton !== undefined )
-    this.sigletons[ name ] = singleton;
+    this.singletons[ name ] = singleton;
   else {
     throw 'arguments are name of lib and lib singleton instance';
   }
