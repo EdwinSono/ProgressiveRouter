@@ -32,7 +32,7 @@ Router.prototype.setRoute = function( route, somethingYouWillRoute ){
     throw 'You should input something you will route which is a page >:)';
 
 
-  var page = require( somethingYouWillRoute );
+  var page = require( __dirname + 'app' + somethingYouWillRoute );
   page = new page( this );
   page.build();//??? yet
 
