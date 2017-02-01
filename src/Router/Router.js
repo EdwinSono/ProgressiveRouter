@@ -4,7 +4,7 @@ var Router = function(){
      this.currentPage;
      this.routeRegExp = /\/([a-zA-Z\.\=\@\-\_]+)/g; //remember to skip 0 index in the array which is the url start
      this.argumentsRegExp = /([a-zA-Z0-9]+)(\=)([a-zA-Z0-9\@\.\#\-\~\°\!]*)/g;
-     this.sigletons = {};
+     this.singletons = {};
      this._getCurrentPage();
 
 };
