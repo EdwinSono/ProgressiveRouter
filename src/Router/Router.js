@@ -4,6 +4,7 @@ var Router = function(){
      this.currentPage;
      this.routeRegExp = /\/([a-zA-Z\.\=\@\-\_]+)/g; //remember to skip 0 index in the array which is the url start
      this.argumentsRegExp = /([a-zA-Z0-9]+)(\=)([a-zA-Z0-9\@\.\#\-\~\°\!]*)/g;
+     this.sigletons = {};
      this._getCurrentPage();
 
 };
@@ -24,13 +25,19 @@ Router.prototype.getArgumentByName = function( argName ){
 
 Router.prototype.setRoute = function( route, somethingYouWillRoute ){
 
-     if( !route )
-          throw 'You shouldnt input empty values as a route';
+  if( !route )
+    throw 'You shouldnt input empty values as a route';
 
-     if( !rootShape )
-          throw 'You should input something you will route';
+  if( !somethingYouWillRoute )
+    throw 'You should input something you will route which is a page >:)';
 
-     this.routes[ this._repairSlashes( route ) ] = somethingYouWillRoute;
+
+  var page = require( somethingYouWillRoute );
+  page = new page( this );
+  page.build();//??? yet
+
+  this.routes[ this._repairSlashes( route ) ] = page;
+
 
 };
 
@@ -74,6 +81,26 @@ Router.prototype._repairSlashes = function( word ){
      }
 
      return word;
+
+};
+
+Router.prototype.addLib = function( name, singleton ){
+
+  if( name !== '' && typeof name === 'string' && singleton !== undefined )
+    this.sigletons[ name ] = singleton;
+  else {
+    throw 'arguments are name of lib and lib singleton instance';
+  }
+
+};
+
+Router.prototype.getLib = function( name ){
+
+  if( typeof name === 'string' && name !== undefined )
+    return this.singletons[ name ];
+  else {
+    throw 'argument should be the name of the lib';
+  }
 
 };
 
