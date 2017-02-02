@@ -92,7 +92,7 @@ Router.prototype._repairSlashes = function( word ){
      }
 
      //remove slash at end if needed
-     if( word.charAt( word.length - 1 ) === '/' ){
+     if( word.charAt( word.length - 1 ) === '/' && word.length > 1 ){
           word = word.substr( 0, word.length - 1 );
      }
 
