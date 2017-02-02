@@ -83,7 +83,7 @@ Router.prototype._getCurrentPage = function(){
 
 Router.prototype._repairSlashes = function( word ){
 
-     if( word === '' )
+     if( word === '' || word === '/' )
           word = '/';
 
           //add slash at end if needed
