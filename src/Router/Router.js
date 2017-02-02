@@ -7,6 +7,8 @@ var Router = function(){
      this.singletons = {};
      this._getCurrentPage();
 
+     this.chooseRoute( this.currentPage.pathname );
+
 };
 
 Router.prototype.getArgumentByName = function( argName ){
@@ -33,12 +35,27 @@ Router.prototype.setRoute = function( route, somethingYouWillRoute ){
 
   var page = somethingYouWillRoute;
   page = new page( this );
-  page.build();//??? yet
+  //page.build();//??? yet
 
   this.routes[ this._repairSlashes( route ) ] = page;
 
 
 };
+
+Router.prototype.chooseRoute = function( route ){
+
+  if( !route )
+    throw 'You shouldnt input empty values as a route';
+
+  if( !this.routes[ this._repairSlashes( route ) ] )
+    route = '/';
+
+  this.routes[ this._repairSlashes( route ) ].build();
+
+
+};
+
+
 
 Router.prototype.getPageShape = function(){
 
