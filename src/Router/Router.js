@@ -6,9 +6,6 @@ var Router = function(){
      this.argumentsRegExp = /([a-zA-Z0-9]+)(\=)([a-zA-Z0-9\@\.\#\-\~\°\!]*)/g;
      this.singletons = {};
      this._getCurrentPage();
-
-     this.chooseRoute( this.currentPage.pathname );
-
 };
 
 Router.prototype.getArgumentByName = function( argName ){
